@@ -16,20 +16,24 @@
             <label class="field--label">Ваш отзыв</label>
             <textarea class="field--data" rows="20"></textarea>
         </div>
-        <div class="field--radio" authorized>
-            <label class="field--label">Вы бы порекомендовали это?</label>
-            <div class="field--data">
-                <input type="radio" name="recommend" />
-                <label>Да</label>
+        @if(Auth::id())
+            <div class="field--radio">
+                <label class="field--label">Вы бы порекомендовали это?</label>
+                <div class="field--data">
+                    <input type="radio" name="recommend" />
+                    <label>Да</label>
+                </div>
+                <div class="field--data">
+                    <input type="radio" name="recommend" />
+                    <label>Нет</label>
+                </div>
             </div>
-            <div class="field--data">
-                <input type="radio" name="recommend" />
-                <label>Нет</label>
+        @else
+            <div class="field">
+                Для того, чтобы оставить рекомендацию к отзыву, <a href="./authentication">войдите или зарегистрируйтесь</a>
             </div>
-        </div>
-        <div class="field" not-authorized>
-            Для того, чтобы оставить рекомендацию к отзыву, <a href="./authentication">войдите или зарегистрируйтесь</a>
-        </div>
+        @endif
+        
     </div>
     <div class="comment--footer buttons">
         <div class="button primary">Отправить отзыв</div>

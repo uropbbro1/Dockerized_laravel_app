@@ -13,7 +13,7 @@
     <body>
         <div id="header" class="header"></div>
         <div id="menu" class="menu"></div>
-        <div id="add-comment" class="add-comment no-display"></div>
+        <div id="add-comment" class="add-comment no-display">@include('add-comment')</div>
 
         <div class="content">
             <h2 class="title">Политика компании в отношении обработки персональных данных</h2>

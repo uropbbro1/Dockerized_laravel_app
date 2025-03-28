@@ -31,14 +31,16 @@ function closePopup() {
 }
 
 function isAuthorized () {
-    let authorized = true;
-    if (authorized) {
-        $('[authorized]').removeClass('no-display');
-        $('[not-authorized]').addClass('no-display');
-    } else {
-        $('[authorized]').addClass('no-display');
-        $('[not-authorized]').removeClass('no-display');
-    }
+    setTimeout(function() {
+        let authorized = false;
+        if (authorized) {
+            $('[authorized]').removeClass('no-display');
+            $('[not-authorized]').addClass('no-display');
+        } else {
+            $('[authorized]').addClass('no-display');
+            $('[not-authorized]').removeClass('no-display');
+        }
+    }, 100);
 }
 
 function showPassword(element) {

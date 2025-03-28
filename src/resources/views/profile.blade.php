@@ -12,8 +12,8 @@
         <script src="{{ URL::asset('js/base.js') }}"></script>
     </head>
     <body>
-        <div id="header" class="header"></div>
-        <div id="menu" class="menu"></div>
+        <div id="header" class="header">@include('header')</div>
+        <div id="menu" class="menu">@include('menu')</div>
         <div id="add-comment" class="add-comment no-display"></div>
 
         <div class="content">
@@ -24,8 +24,8 @@
                     <div class="photo">
                     </div>
                     <div class="info">
-                        <div class="info--nickname">Nickname</div>
-                        <div>ID: 116933795</div>
+                        <div class="info--nickname">{{ Auth::user()->login }}</div>
+                        <div>ID: {{Auth::user()->id}}</div>
                         <div class="info--update-photo pointer">Заменить фото</div>
                     </div>
                 </div>
@@ -34,14 +34,7 @@
                         <div class="field">
                             <label class="field--label">Логин / Имя пользователя</label>
                             <div class="field--data">
-                                <input type="text" value="Nickname">
-                            </div>
-                        </div>
-                        <div class="field">
-                            <label class="field--label">Пароль</label>
-                            <div class="field--data with-image">
-                                <input type="text" value="">
-                                <span class="private" onclick="showPassword(this)"></span>
+                                <input type="text" value="{{ Auth::user()->login }}">
                             </div>
                         </div>
                     </div>
@@ -49,8 +42,15 @@
                         <div class="field">
                             <label class="field--label">E-mail</label>
                             <div class="field--data">
-                                <input type="text" value="123456">
+                                <input type="text" value="{{ Auth::user()->email }}">
                             </div>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="field--label">Пароль</label>
+                        <div class="field--data with-image">
+                            <input type="text" value="" placeholder="Введите пароль чтобы изменить данные аккаунта">
+                            <span class="private" onclick="showPassword(this)"></span>
                         </div>
                     </div>
                 </div>
@@ -85,6 +85,6 @@
 
         </div>
 
-        <div id="footer" class="footer"></div>
+        <div id="footer" class="footer">@include('footer')</div>
     </body>
 </html>

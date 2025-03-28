@@ -13,7 +13,7 @@
     <body>
         <div id="header" class="header"></div>
         <div id="menu" class="menu"></div>
-        <div id="add-comment" class="add-comment no-display"></div>
+        <div id="add-comment" class="add-comment no-display">@include('add-comment')</div>
 
         <div class="content">
             <div class="popup">
@@ -28,8 +28,12 @@
                             <input type="text" value="">
                         </div>
                     </div>
-                    <div class="field buttons">  
-                        <a href="./authentication"><div class="button">Назад</div></a>
+                    <div class="field buttons">
+                        @if(Auth::id() >=0)
+                            <a href="./profile"><div class="button">Назад</div></a>
+                        @else
+                            <a href="./authentication"><div class="button">Назад</div></a>
+                        @endif                        
                         <div class="button primary">
                             Далее
                         </div>
