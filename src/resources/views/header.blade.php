@@ -14,9 +14,11 @@
         @endif
         @if (Auth::id())
             <div class="person pointer" onclick="openPersonPopup()">
-                <span class="person--icon">
-                    <img src="./image/Union.png">
-                </span>
+                @if(Auth::user()->image)
+                    <img src="{{ Auth::user()->image }}" alt="User Avatar" width="50" height="50" style="border-radius: 50%;">
+                @else
+                    <img src="https://avatars.mds.yandex.net/i?id=e9213621c435c234cc2415b97ae55232_l-4571652-images-thumbs&n=13" alt="Default user Avatar" width="50" height="50" style="border-radius: 50%;">
+                @endif
                 <span class="person--nickname">{{ Auth::user()->login }}</span>
             </div>
         

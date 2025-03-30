@@ -17,51 +17,6 @@
         <div id="menu" class="menu">@include('menu')</div>
         <div id="add-comment" class="add-comment no-display">@include('add-comment')</div>
 
-        <div id="popup-comment" class="add-comment popup-comment no-display">
-            <div class="comment-form">
-                <div class="popup--title">
-                    Отзыв
-                    <div class="close pointer" onclick="closePopup()">
-                        <img src="./image/close.svg">
-                    </div>
-                </div>
-                <div class="comment--info">
-                    <div class="person">
-                            <span class="person--icon">
-                                <img src="./image/Union.png">
-                            </span>
-                        <span class="person--nickname">Nickname</span>
-                    </div>
-                    <div class="comment--title">
-                        Прототип нового сервиса — это как треск разлетающихся скреп!
-                    </div>
-                    <div class="comment--data">
-                        Высокий уровень вовлечения представителей целевой аудитории является четким доказательством простого факта: граница обучения кадров способствует повышению качества экспериментов, поражающих по своей масштабности и грандиозности. Следует отметить, что реализация намеченных плановых заданий создаёт необходимость включения в производственный план целого ряда внеочередных мероприятий с учётом комплекса новых принципов формирования материально-технической и кадровой базы.
-                        Равным образом, существующая теория выявляет срочную потребность укрепления моральных ценностей. В целом, конечно, высококачественный прототип будущего проекта влечет за собой процесс внедрения и модернизации распределения внутренних резервов и ресурсов. С другой стороны, постоянный количественный рост и сфера нашей активности предполагает независимые способы реализации кластеризации усилий.
-                        Как принято считать, акционеры крупнейших компаний формируют глобальную экономическую сеть и при этом — объективно рассмотрены соответствующими инстанциями. Мы вынуждены отталкиваться от того, что глубокий уровень погружения требует определения и уточнения прогресса профессионального сообщества! Современные технологии достигли такого уровня, что граница обучения кадров позволяет выполнить важные задания по разработке анализа существующих паттернов поведения! Современные технологии достигли такого уровня, что современная методология разработки не оставляет шанса для прогресса профессионального сообщества. Ясность нашей позиции очевидна: постоянный количественный рост и сфера нашей активности обеспечивает актуальность приоретизации разума над эмоциями. Таким образом, высокотехнологичная концепция общественного уклада не даёт нам иного выбора, кроме определения экспериментов, поражающих по своей масштабности и грандиозности.
-                        Но постоянное информационно-пропагандистское обеспечение нашей деятельности, а также свежий взгляд на привычные вещи — безусловно открывает новые горизонты для прогресса профессионального сообщества. Равным образом, начало повседневной работы по формированию позиции, а также свежий взгляд на привычные вещи — безусловно открывает новые горизонты для приоретизации разума над эмоциями. Приятно, граждане, наблюдать, как элементы политического процесса, которые представляют собой яркий пример континентально-европейского типа политической культуры, будут представлены в исключительно положительном свете. Учитывая ключевые сценарии поведения, дальнейшее развитие различных форм деятельности играет важную роль в формировании вывода текущих активов. Однозначно, представители современных социальных резервов призваны к ответу. Но курс на социально-ориентированный национальный проект требует от нас анализа прогресса профессионального сообщества.
-                    </div>
-                    <div class="recommend no-display">
-                        <img src="./image/mdi_thumb-up-outline.svg">
-                        <div>
-                            <div class="nickname">Nickname</div>
-                            <div class="status">рекомендует</div>
-                        </div>
-                    </div>
-                    <div class="recommend no-recommend">
-                        <img src="./image/mdi_thumb-up-outline-red.svg">
-                        <div>
-                            <div class="nickname">Nickname</div>
-                            <div class="status">нерекомендует</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="comment--footer buttons">
-                    <div class="button" onclick="closePopup()">Назад</div>
-                </div>
-            </div>
-        </div>
-
         <div class="content with-pagination">
             <h2>Отзывы</h2>
 
@@ -76,95 +31,143 @@
                         <span onclick="updateSort()" id="sort" class="up">по дате <img src="./image/arrow-wrapper-black.svg"></span>
                     </div>
                     <div class="all-count">
-                        Найден(о) N отзыв(а/ов)
+                        Найден(о) {{ $reviews_count }} отзыв(а/ов)
                     </div>
                 </div>
             </div>
 
             <!--  циклом выдавать сюда отзывы  -->
-            <div class="comment">
-                <div class="person">
-                            <span class="person--icon">
-                                <img src="./image/Union.png">
-                            </span>
-                    <span class="person--nickname">Nickname</span>
-                </div>
-                <div class="date">
-                    07.10.2022
-                </div>
-                <div class="comment--title">
-                    Прототип нового сервиса — это как треск разлетающихся скреп!
-                </div>
-                <div class="comment--data">
-                    Вот вам яркий пример современных тенденций — постоянное информационно-пропагандистское обеспечение нашей деятельности не оставляет шанса для новых принципов формирования материально-технической и кадровой базы. Мы вынуждены отталкиваться от того, что сплочённость команды профессионалов говорит о возможностях существующих финансовых и административных условий. И нет сомнений, что базовые сценарии поведения пользователей функционально разнесены на независимые элементы.
-                </div>
-                <div class="buttons">
-                    <div class="button" onclick="showAll()">Читать весь отзыв</div>
-                </div>
-            </div>
-            <div class="comment">
-                <div class="person">
-                            <span class="person--icon">
-                                <img src="./image/Union.png">
-                            </span>
-                    <span class="person--nickname">Nickname</span>
-                </div>
-                <div class="date">
-                    07.10.2022
-                </div>
-                <div class="comment--title">
-                    Прототип нового сервиса — это как треск разлетающихся скреп!
-                </div>
-                <div class="comment--data">
-                    Вот вам яркий пример современных тенденций — постоянное информационно-пропагандистское обеспечение нашей деятельности не оставляет шанса для новых принципов формирования материально-технической и кадровой базы. Мы вынуждены отталкиваться от того, что сплочённость команды профессионалов говорит о возможностях существующих финансовых и административных условий. И нет сомнений, что базовые сценарии поведения пользователей функционально разнесены на независимые элементы.
-                </div>
-                <div class="buttons">
-                    <div class="button with-image" onclick="updateComment()">
-                        <img src="./image/Review.svg" />
-                        Редактировать отзыв
+            @foreach ($reviews as $review)
+                <div class="comment">
+                    <div class="person">
+                        @if($review->image)
+                            <img src="{{ $review->image }}" alt="User Avatar" width="100" height="100" style="border-radius: 50%;">
+                        @else
+                            <img src="https://avatars.mds.yandex.net/i?id=e9213621c435c234cc2415b97ae55232_l-4571652-images-thumbs&n=13" alt="Default user Avatar" width="100" height="100" style="border-radius: 50%;">
+                        @endif
+                        <span class="person--nickname">@if(!$review->login) Гость @else {{ $review->login }} @endif</span>
                     </div>
-                    <div class="button" onclick="showAll()">Читать весь отзыв</div>
-                </div>
-            </div>
-            <div class="comment">
-                <div class="person">
-                            <span class="person--icon">
-                                <img src="./image/Union.png">
-                            </span>
-                    <span class="person--nickname">Nickname</span>
-                </div>
-                <div class="date">
-                    07.10.2022
-                </div>
-                <div class="comment--title">
-                    Прототип нового сервиса — это как треск разлетающихся скреп!
-                </div>
-                <div class="comment--data">
-                    Вот вам яркий пример современных тенденций — постоянное информационно-пропагандистское обеспечение нашей деятельности не оставляет шанса для новых принципов формирования материально-технической и кадровой базы. Мы вынуждены отталкиваться от того, что сплочённость команды профессионалов говорит о возможностях существующих финансовых и административных условий. И нет сомнений, что базовые сценарии поведения пользователей функционально разнесены на независимые элементы.
-                </div>
-                <div class="buttons">
-                    <div class="button" onclick="showAll()">Читать весь отзыв</div>
-                </div>
-            </div>
+                    
+                    <div class="date">
+                        Отзыв от: {{ explode(' ', $review->created_at)[0] }}
+                    </div>
+                    
+                    <div class="date">
+                        Отзыв изменен: {{ explode(' ', $review->updated_at)[0] }}
+                    </div>
+                    
+                    <div class="comment--title">
+                        {{ $review->title }}
+                    </div>
+                    
+                    <div class="comment--data">
+                        {{ $review->text }}
+                    </div>
+                    
+                    <div class="buttons">
+                        <div class="button" onclick="showAll({{ $review->id }})">Читать весь отзыв</div>
+                    </div>
+                    @if(Auth::id() === $review->user_id)
+                        <div class="buttons">
+                            <button class="button" onclick="openReviewUpdate({{ $review->id }})">Редактировать</button>
+                        </div>
+                    @endif
 
+                    <!-- высплывающее окно для каждого отзыва -->
+                    <div id="popup-comment{{ $review->id }}" class="add-comment popup-comment no-display">
+                        <div class="comment-form">
+                            <div class="popup--title">
+                                Отзыв
+                                <div class="close pointer" onclick="closeReviewPopup({{ $review->id }})">
+                                    <img src="./image/close.svg">
+                                </div>
+                            </div>
+                            <div class="comment--info">
+                                <div class="person">
+                                    @if($review->image)
+                                        <img src="{{ $review->image }}" alt="User Avatar" width="100" height="100" style="border-radius: 50%;">
+                                    @else
+                                        <img src="https://avatars.mds.yandex.net/i?id=e9213621c435c234cc2415b97ae55232_l-4571652-images-thumbs&n=13" alt="Guest Avatar" width="100" height="100" style="border-radius: 50%;">
+                                    @endif
+                                    <span class="person--nickname">@if(!$review->login) Гость @else {{ $review->login }} @endif</span>
+                                </div>
+                                <div class="comment--title">
+                                    {{ $review->title }}
+                                </div>
+                                <div class="comment--data">
+                                    {{ $review->text }}
+                                </div>
+                                @if($review->is_recommended === 'yes')
+                                    <div class="recommend">
+                                        <img src="./image/mdi_thumb-up-outline.svg">
+                                        <div>
+                                            <div class="nickname">{{ $review->login }}</div>
+                                            <div class="status">рекомендует</div>
+                                        </div>
+                                    </div>
+                                @elseif($review->is_recommended === 'no')
+                                    <div class="recommend no-recommend">
+                                        <img src="./image/mdi_thumb-up-outline-red.svg">
+                                        <div>
+                                            <div class="nickname">{{ $review->login }}</div>
+                                            <div class="status">нерекомендует</div>
+                                        </div>
+                                    </div>
+                                @else
+                                @endif
+                            </div>
+                            <div class="comment--footer buttons">
+                                <div class="button" onclick="closeReviewPopup({{ $review->id }})">Назад</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- высплывающее окно для реадактирования каждого отзыва -->
+                    <div id="review-update{{ $review->id }}" class="comment-form review-update no-display" style="margin-top:20px;">
+                        <form method="post" action="{{ route('update-review') }}">
+                            @csrf
+                            <input type="number" value="{{ $review->id }}" name="id" id="id" hidden>
+                            <div class="popup--title">
+                                Редактировать отзыв
+                                <div class="close pointer" onclick="closeReviewPopup({{ $review->id }})">
+                                    <img src="./image/close.svg">
+                                </div>
+                            </div>
+                            <div class="comment--info">
+                                <div class="field">
+                                    <lable class="field--label">Новый заголовок отзыва одной фразой</lable>
+                                    <div class="field--data">
+                                        <input type="text" name="title" id="title" value="{{ $review->title }}" required/>
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <label class="field--label">Ваш новый отзыв</label>
+                                    <textarea class="field--data" rows="20" name="text" id="text" required>{{ $review->text }}</textarea>
+                                </div>
+                                    <div class="field--radio">
+                                        <label class="field--label">Вы бы порекомендовали это?</label>
+                                        <div class="field--data">
+                                            <input type="radio" name="is_recommended" id="is_recommended" value="yes"/>
+                                            <label>Да</label>
+                                        </div>
+                                        <div class="field--data">
+                                            <input type="radio" name="is_recommended" id="is_recommended" value="no"/>
+                                            <label>Нет</label>
+                                        </div>
+                                    </div>                                
+                            </div>
+                            <div class="comment--footer buttons">
+                                <button class="button primary" type="submit">Редактировать отзыв</button>
+                                <div class="button" onclick="closeReviewPopup({{ $review->id }})">Назад</div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            @endforeach
         </div>
 
         <div class="pagination">
-            <pages>
-                <img src="./image/arrow-today.svg">
-                <page class="active">1</page>
-                <page>2</page>
-                <page>3</page>
-                <page class="no-active">...</page>
-                <page>9</page>
-                <img class="last" src="./image/arrow-today.svg">
-            </pages>
-            <counts>
-                Показывать по:
-                <count>10</count>
-                <count class="active">20</count>
-                <count>50</count>
-            </counts>
+            {{ $reviews->links() }} <!-- Вывод ссылок пагинации -->
         </div>
 
         <div id="footer" class="footer">@include('footer')</div>
