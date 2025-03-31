@@ -8,6 +8,7 @@ use App\Http\Controllers\CheckPasswordController;
 use App\Http\Controllers\GetProfileController;
 use App\Http\Controllers\GetReviewsController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\SortReviewsController;
 use App\Http\Controllers\UpdateDataController;
 use App\Http\Controllers\UpdateReviewController;
 use Illuminate\Support\Facades\Auth;
@@ -18,8 +19,11 @@ Route::get('/', function () {
 })->name('index');
 
 Route::get('/comments', [GetReviewsController::class, 'get'])->name('comments');
-Route::post('/add-review', [AddReviewController::class, 'add'])->middleware('auth')->name('add-review');
+Route::post('/search-reviews-comments', [GetReviewsController::class, 'search'])->name('search-reviews-comments');
+Route::post('/add-review', [AddReviewController::class, 'add'])->name('add-review');
 Route::post('/update-review', [UpdateReviewController::class, 'updateReview'])->middleware('auth')->name('update-review');
+Route::get('/sort-reviews', [SortReviewsController::class, 'sort'])->middleware('auth')->name('sort-reviews');
+Route::post('/search-reviews', [SortReviewsController::class, 'search'])->middleware('auth')->name('search-reviews');
 
 Route::get('/authentication', function () {
     return view('authentication');

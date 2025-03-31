@@ -29,6 +29,10 @@ function openReviewUpdate(id) {
     $(`#review-update${id}`).removeClass('no-display');
 }
 
+function openAddReview() {
+    $('#add-comment').removeClass('no-display');
+}
+
 function openChangeAvatar(){
     $(`#change-avatar-block`).removeClass('no-display');
 }
@@ -69,8 +73,73 @@ function showPassword(element) {
     }
 }
 
+function togglePasswordVisibility() {
+    const passwordInput = document.getElementById("password");
+    const icon = document.querySelector(".password-toggle"); // Находим иконку
+    if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+        icon.classList.add("private-on"); // Меняем иконку на "зачеркнутый глаз"
+    } else {
+        passwordInput.type = "password";
+        icon.classList.remove("private-on");
+    }
+}
+
+function togglePasswordVisibilityReg() {
+    const passwordInput = document.getElementById("password_reg");
+    const passwordConfirmationInput = document.getElementById("password_confirmation");
+    const icon = document.querySelector(".password-toggle-reg");
+    const icon2 = document.querySelector(".password-toggle-reg1");
+    if (passwordInput.type === "password" || passwordConfirmationInput.type === "password") {
+        passwordInput.type = "text";
+        passwordConfirmationInput.type = "text";
+        icon.classList.add("private-on");
+        icon2.classList.add("private-on");
+    } else {
+        passwordInput.type = "password";
+        passwordConfirmationInput.type = "password";
+        icon.classList.remove("private-on");
+        icon2.classList.remove("private-on");
+    }
+}
+
+function togglePasswordVisibilityChange() {
+    const passwordInput = document.getElementById("to_change_password");
+    const passwordConfirmationInput = document.getElementById("repeat_password");
+    const icon = document.querySelector(".password-toggle-change");
+    const icon2 = document.querySelector(".password-toggle-repeat");
+    if (passwordInput.type === "password" || passwordConfirmationInput.type === "password") {
+        passwordInput.type = "text";
+        passwordConfirmationInput.type = "text";
+        icon.classList.add("private-on");
+        icon2.classList.add("private-on");
+    } else {
+        passwordInput.type = "password";
+        passwordConfirmationInput.type = "password";
+        icon.classList.remove("private-on");
+        icon2.classList.remove("private-on");
+    }
+}
+
 function changePassValue(element) {
     let passwordFieldValue = element.value;
     document.querySelector('#password_to_check').value = passwordFieldValue;
     return 1;
 }
+
+//изменение имя поля при загруженном изображении
+document.addEventListener('DOMContentLoaded', function() {
+    const fileInput = document.getElementById('image');
+    const fileNameSpan = document.querySelector('.custom-file-upload-filename');
+
+    if (fileInput && fileNameSpan) {
+        fileInput.addEventListener('change', function() {
+            if (this.files && this.files.length > 0) {
+                const fileName = this.files[0].name;
+                fileNameSpan.textContent = fileName;
+            } else {
+                fileNameSpan.textContent = 'Файл не выбран';
+            }
+        });
+    }
+});

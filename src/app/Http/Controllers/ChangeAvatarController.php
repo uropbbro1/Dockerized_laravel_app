@@ -6,13 +6,28 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class ChangeAvatarController extends Controller
 {
     public function change(Request $request) {
-        $request->validate([
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Валидация файла
-        ]);
+        $rules = [
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+        ];
+
+        $messages = [
+            'image.mimes' => 'Изображение должно быть в формате: jpeg, png, jpg, gif, svg.',
+            'image.max'   => 'Размер изображения не должен превышать 2048 килобайт.',
+            'image.required' => 'Пожалуйста, загрузите изображение.',
+            'image.image' => 'Файл должен быть изображением.',
+        ];
+
+        $validator = Validator::make($request->all(), $rules, $messages);
+        if ($validator->fails()) {
+            return redirect()->back()
+                             ->withErrors($validator)
+                             ->withInput();
+        }
 
         $user = Auth::user();
         if ($request->hasFile('image')) {

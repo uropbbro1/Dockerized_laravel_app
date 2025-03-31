@@ -3,7 +3,7 @@
         logo text
     </div>
     <div class="right-block">
-        <div class="button primary" onclick="openPopup()">
+        <div class="but" onclick="openPopup()">
             <img class="add--icon" src="./image/Plus.png">
             <span class="add--text">Добавить отзыв</span>
         </div>

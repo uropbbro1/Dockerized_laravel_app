@@ -1,5 +1,5 @@
 <div class="comment-form">
-    <form method="post" action="{{ route('add-review') }}">
+    <form method="post" action="{{ route('add-review') }}" novalidate>
         @csrf
         <input type="number" value="{{ Auth::id() }}" name="user_id" id="user_id" hidden>
         <div class="popup--title">
@@ -13,11 +13,17 @@
                 <lable class="field--label">Заголовок отзыва одной фразой</lable>
                 <div class="field--data">
                     <input type="text" name="title" id="title" required/>
+                    @error('title')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                 </div>
             </div>
             <div class="field">
                 <label class="field--label">Ваш отзыв</label>
                 <textarea class="field--data" rows="20" name="text" id="text" required></textarea>
+                @error('text')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
             </div>
             @if(Auth::id())
                 <div class="field--radio">
@@ -30,6 +36,9 @@
                         <input type="radio" name="is_recommended" id="is_recommended" value="no"/>
                         <label>Нет</label>
                     </div>
+                    @error('is_recommended')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                 </div>
             @else
                 <div class="field">

@@ -12,7 +12,13 @@
     </head>
     <body>
         <div id="header" class="header">@include('header')</div>
-        <div id="menu" class="menu">@include('menu')</div>
+        <div id="menu" class="menu">
+            <div class="menu--item pointer" onclick="openPage('')">Главная</div>
+            <div class="menu--item pointer" onclick="openPage('comments')">Отзывы</div>
+            @if (Auth::id())
+                <div class="menu--item pointer" onclick="openPage('profile')">Мой профиль</div>
+            @endif
+        </div>
         <div id="add-comment" class="add-comment no-display">@include('add-comment')</div>
 
         <div class="content">
@@ -27,3 +33,8 @@
         <div id="footer" class="footer">@include('footer')</div>
     </body>
 </html>
+@if(session('error'))
+    <script>
+        openAddReview();
+    </script>
+@endif
