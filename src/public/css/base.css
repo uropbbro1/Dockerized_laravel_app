@@ -1,11 +1,13 @@
 body {
     margin: 0;
     background-color: #F2F2F2;
+    padding-bottom: 100px;
 }
 .content {
     padding: 32px 120px;
-    min-height: calc(100vh - 304px)
+    min-height: fit-content;
 }
+
 .title {
     font-size: 24px;
     font-weight: 600;
@@ -69,14 +71,52 @@ body {
     cursor: pointer;
     border: 1px solid #1540A0;
     color: #1540A0;
-    width: max-content;
+    width: calc(fit-content + 20px);
     height: 20px;
+    text-decoration: none;
+    display: inline-block;
 }
 .button.primary {
     background: var(--orange-orange-10, #E98A0B);
     color: #FFFFFF;
     border: 0;
-    height: 22px;
+    height: 30px;
+    display: inline-block;
+    width:fit-content;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.but {
+    background: var(--orange-orange-10, #E98A0B);
+    color: #FFFFFF;
+    border: 0;
+    height: 30px;
+    width:fit-content;
+    padding-left: 10px;
+    padding-right: 10px;
+    display: flex;
+    flex-direction: row;
+}
+.but .add--text {
+    margin-top: 5px;
+}
+
+.search-button{
+    padding: 5px 16px;
+    line-height: 20px;
+    font-weight: 700;
+    font-size: 14px;
+    border-radius: 2px;
+    text-align: center;
+    cursor: pointer;
+    border: 1px solid #1540A0;
+    color: #1540A0;
+    height: 30px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-decoration: none;
+    display: inline-block;
 }
 
 h2 {
@@ -108,6 +148,22 @@ input:focus-visible {
     height: calc(100% - 14px);
     padding: 7px 8px;
 }
+
+.field .pass-field{
+    width: calc(100% + 210px);
+    border-radius: 2px;
+    border: 1px solid var(--black-black-03, #BABABA);
+    background: var(--black-black-0, #FFF);
+    height: 32px;
+}
+
+.field .pass-field input{
+    border: 0;
+    width: calc(100% - 16px);
+    height: calc(100% - 14px);
+    padding: 7px 8px;
+}
+
 input:focus-visible, textarea:focus-visible {
     outline: 0;
 }
@@ -125,10 +181,10 @@ input:focus-visible, textarea:focus-visible {
     right: 8px;
     top: 1px;
     cursor: pointer;
-    background-image: url(../image/mdi_eye-off-outline.svg);
+    background-image: url(/image/mdi_eye-off-outline.svg);
 }
 .field span.private.private-off {
-    background-image: url(../image/eye-open.png);
+    background-image: url('/image/eye-open.png');
 }
 
 
@@ -138,6 +194,7 @@ input:focus-visible, textarea:focus-visible {
     width: 100vw;
     height: 100vh;
     background: rgba(0, 0, 0, 0.30);
+    z-index: 1;
 }
 .add-comment .comment-form {
     margin: 60px calc(50% - 500px);
@@ -179,3 +236,146 @@ input:focus-visible, textarea:focus-visible {
     margin: 0 16px 0 0;
 }
 
+.no-decoration{
+    text-decoration: none;
+}
+
+.person{
+    position: relative;
+    top: -10px;
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    background-color: #444;
+    width: 100%;
+    margin-top: 100px;
+}
+
+.alert.alert-danger{
+    color:red;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.alert.alert-success{
+    color:green;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.password-container {
+    position: relative;
+}
+
+.password-toggle {
+    width: 28px;
+    height: 28px;
+    left: 90%;
+    top: -30px;
+    cursor: pointer;
+    background-image: url('/image/mdi_eye-off-outline.svg');
+    position: relative;
+    display: block;
+}
+
+.password-toggle.private-on {
+    width: 28px;
+    height: 28px;
+    left: 90%;
+    top: -30px;
+    cursor: pointer;
+    background-image: url('/image/eye-open.png');
+    position: relative;
+    display: block;
+}
+
+.password-toggle-reg {
+    width: 28px;
+    height: 28px;
+    left: 90%;
+    top: -30px;
+    cursor: pointer;
+    background-image: url('/image/mdi_eye-off-outline.svg');
+    position: relative;
+    display: block;
+}
+
+.password-toggle-reg.private-on {
+    width: 28px;
+    height: 28px;
+    left: 90%;
+    top: -30px;
+    cursor: pointer;
+    background-image: url('/image/eye-open.png');
+    position: relative;
+    display: block;
+}
+
+.password-toggle-reg1 {
+    width: 28px;
+    height: 28px;
+    left: 90%;
+    top: -30px;
+    cursor: pointer;
+    background-image: url('/image/mdi_eye-off-outline.svg');
+    position: relative;
+    display: block;
+}
+
+.password-toggle-reg1.private-on {
+    width: 28px;
+    height: 28px;
+    left: 90%;
+    top: -30px;
+    cursor: pointer;
+    background-image: url('/image/eye-open.png');
+    position: relative;
+    display: block;
+}
+
+.password-toggle-change {
+    width: 28px;
+    height: 28px;
+    left: 90%;
+    top: -30px;
+    cursor: pointer;
+    background-image: url('/image/mdi_eye-off-outline.svg');
+    position: relative;
+    display: block;
+}
+
+.password-toggle-change.private-on {
+    width: 28px;
+    height: 28px;
+    left: 90%;
+    top: -30px;
+    cursor: pointer;
+    background-image: url('/image/eye-open.png');
+    position: relative;
+    display: block;
+}
+
+.password-toggle-repeat {
+    width: 28px;
+    height: 28px;
+    left: 90%;
+    top: -30px;
+    cursor: pointer;
+    background-image: url('/image/mdi_eye-off-outline.svg');
+    position: relative;
+    display: block;
+}
+
+.password-toggle-repeat.private-on {
+    width: 28px;
+    height: 28px;
+    left: 90%;
+    top: -30px;
+    cursor: pointer;
+    background-image: url('/image/eye-open.png');
+    position: relative;
+    display: block;
+}

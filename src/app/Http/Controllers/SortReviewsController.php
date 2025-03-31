@@ -5,9 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
-class GetReviewsController extends Controller
+class SortReviewsController extends Controller
 {
-    public function get(Request $request){
+    public function sort(Request $request){
         if($request->query('is-searched')){
             $searchTerm = $request->query('is-searched');
             if($request->query('is-sorted') === '1'){
@@ -23,7 +23,7 @@ class GetReviewsController extends Controller
                 ->where('text', 'LIKE', '%' . $searchTerm . '%')
                 ->orderBy('reviews.created_at', 'asc')
                 ->get());
-                return view('comments')->with('reviews', $reviews)
+                return view('sorted-comments')->with('reviews', $reviews)
                             ->with('reviews_count', $reviews_count)
                             ->with('sorted', -1)
                             ->with('complete_search', $searchTerm);
@@ -40,7 +40,7 @@ class GetReviewsController extends Controller
                 ->where('text', 'LIKE', '%' . $searchTerm . '%')
                 ->orderBy('reviews.created_at', 'desc')
                 ->get());
-                return view('comments')->with('reviews', $reviews)
+                return view('sorted-comments')->with('reviews', $reviews)
                             ->with('reviews_count', $reviews_count)
                             ->with('sorted', 1)
                             ->with('complete_search', $searchTerm);
@@ -49,12 +49,15 @@ class GetReviewsController extends Controller
             $reviews = DB::table('reviews')
             ->leftJoin('new_users', 'reviews.user_id', '=',  'new_users.id')
             ->select('reviews.*', 'new_users.login', 'new_users.image')
+            ->orderBy('reviews.created_at', 'desc')
             ->simplePaginate(3);
             $reviews_count = count(DB::table('reviews')
             ->leftJoin('new_users', 'reviews.user_id', '=',  'new_users.id')
             ->select('reviews.*', 'new_users.login', 'new_users.image')
             ->get());
-            return view('comments')->with('reviews', $reviews)->with('reviews_count', $reviews_count);
+            return view('sorted-comments')->with('reviews', $reviews)
+                            ->with('reviews_count', $reviews_count)
+                            ->with('sorted', 1);
         }
     }
 
@@ -78,6 +81,7 @@ class GetReviewsController extends Controller
         ->orderBy('reviews.created_at', 'desc')
         ->get());
 
-        return view('comments')->with('reviews', $reviews)->with('reviews_count', $reviews_count)->with('sorted', -1)->with('complete_search', $searchTerm);  
+        return view('sorted-comments')->with('reviews', $reviews)->with('reviews_count', $reviews_count)->with('sorted', -1)->with('complete_search', $searchTerm);
     }
+
 }

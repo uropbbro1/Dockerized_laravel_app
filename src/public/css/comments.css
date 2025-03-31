@@ -36,7 +36,10 @@
 
 .comment {
     background-color: #FFF;
-    padding: 24px;
+    padding: 30px 12px 30px 12px;
+    width:87%;
+    margin: 0 auto 20px auto;
+    border-radius: 5px;
 }
 .comment:not(:last-child) {
     margin-bottom: 24px;
@@ -118,18 +121,45 @@
     gap: 8px;
 }
 
+.comment-focus{
+    position: fixed;  /* Фиксированное позиционирование */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;  /* Горизонтальное выравнивание по центру */
+    align-items: center;     /* Вертикальное выравнивание по центру */
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.comment-focus .comment-form{
+    width: 70%;
+    margin-bottom: 20px;
+    background: #FFF;
+}
+.comment-focus .comment-form .field--radio{
+    margin-bottom: 20px;
+    background: #FFF;
+}
+
 .popup-comment .comment--info {
     max-height: calc(100vh - 295px);
     overflow-y: auto;
+    margin: 0 auto 0 auto;
+    background: #FFF;
 }
 .popup-comment .comment--title {
+    padding: 14px 0px;
     font-size: 24px;
     font-weight: 600;
     line-height: 32px;
-    margin: 24px 0 8px 0;
+    display: flex;
 }
 .popup-comment .comment--data {
-    margin-bottom: 24px;
+    width: 100%;
+    background: #FFF;
 }
 .popup-comment .recommend {
     border-radius: 8px;
@@ -156,6 +186,15 @@
 .popup-comment .recommend.no-recommend img {
     transform: rotateX(180deg);
 }
+
+.popup-comment .recommend.no-recommend img {
+    transform: rotateX(180deg);
+}
+.popup-comment .comment--footer{
+    background: var(--black-black-005, #F2F2F2);
+    padding: 16px 32px;
+    justify-content: flex-end;
+}   
 
 .down img {
     transform: rotate(180deg);

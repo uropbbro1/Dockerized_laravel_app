@@ -15,20 +15,14 @@
     </head>
     <body>
         <div id="header" class="header">@include('header')</div>
-        <div id="menu" class="menu">
-            <div class="menu--item pointer" onclick="openPage('')">Главная</div>
-            <div class="menu--item pointer active" onclick="openPage('comments')">Отзывы</div>
-            @if (Auth::id())
-                <div class="menu--item pointer" onclick="openPage('profile')">Мой профиль</div>
-            @endif
-        </div>
+        <div id="menu" class="menu">@include('menu')</div>
         <div id="add-comment" class="add-comment no-display">@include('add-comment')</div>
 
         <div class="content with-pagination">
             <h2>Отзывы</h2>
             <div class="filters">
                 <div class="search">
-                    <form action="{{ route('search-reviews-comments') }}" method="post" style="display:flex;flex-direction:column;" novalidate>
+                    <form action="{{ route('search-reviews') }}" method="post" style="display:flex;flex-direction:column;" novalidate>
                         @csrf
                         <div style="display:flex;flex-direction:row;">
                             <img src="./image/Magnifier.svg" />
@@ -41,11 +35,12 @@
                 <br><br>
                 <div class="field">
                     <div class="sort">
-                        @if(!isset($complete_search))
-                            <span onclick="updateSort('{{ route('sort-reviews') }}')" id="sort" class="up">по дате <img src="./image/arrow-wrapper-black.svg"></span>
-                        @else
-                            <span onclick="updateSort('{{ route('comments', ['is-searched' => $complete_search, 'is-sorted' => $sorted]) }}')" id="sort" class="up">по дате <img src="./image/arrow-wrapper-black.svg"></span>
-                        @endif
+                        Показывать: 
+                            @if(!isset($complete_search))
+                                <span onclick="updateSort('{{ route('comments') }}')" id="sort" class="down">по дате <img src="./image/arrow-wrapper-black.svg"></span>
+                            @else
+                                <span onclick="updateSort('{{ route('sort-reviews', ['is-searched' => $complete_search, 'is-sorted' => $sorted]) }}')" id="sort" class="down">по дате <img src="./image/arrow-wrapper-black.svg"></span>
+                            @endif
                     </div>
                     <div class="all-count">
                         Найден(о) {{ $reviews_count }} отзыв(а/ов)
@@ -147,9 +142,9 @@
                     </div>
 
                     <!-- высплывающее окно для реадактирования каждого отзыва -->
-                    <div id="review-update{{ $review->id }}" class="comment-focus review-update no-display">
+                    <div id="review-update{{ $review->id }}" class="comment-focus review-update no-display" novalidate>
                         <div class="comment-form">
-                            <form method="post" action="{{ route('update-review') }}" novalidate>
+                            <form method="post" action="{{ route('update-review') }}">
                                 @csrf
                                 <input type="number" value="{{ $review->id }}" name="id" id="id" hidden>
                                 <div class="popup--title">
@@ -207,15 +202,6 @@
         openReviewUpdate({{session('err')}});
     </script>
 @endif
-
-@if(session('sorted') > 0)
-    <script>
-        setTimeout(updateSortImage(), 100);
-        console.log('done');
-        
-    </script>
-@endif
-
 @if(session('error'))
     <script>
         openAddReview();

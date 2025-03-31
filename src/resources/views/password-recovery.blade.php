@@ -11,8 +11,14 @@
         <script src="{{ URL::asset('js/base.js') }}"></script>
     </head>
     <body>
-        <div id="header" class="header"></div>
-        <div id="menu" class="menu"></div>
+        <div id="header" class="header">@include('header')</div>
+        <div id="menu" class="menu">
+            <div class="menu--item pointer active" onclick="openPage('')">Главная</div>
+            <div class="menu--item pointer" onclick="openPage('comments')">Отзывы</div>
+            @if (Auth::id())
+                <div class="menu--item pointer" onclick="openPage('profile')">Мой профиль</div>
+            @endif
+        </div>
         <div id="add-comment" class="add-comment no-display">@include('add-comment')</div>
 
         <div class="content">
@@ -29,10 +35,10 @@
                         </div>
                     </div>
                     <div class="field buttons">
-                        @if(Auth::id() >=0)
+                        @if(Auth::id())
                             <a href="./profile"><div class="button">Назад</div></a>
                         @else
-                            <a href="./authentication"><div class="button">Назад</div></a>
+                            <a href="./authentication" class="no-decoration"><div class="button">Назад</div></a>
                         @endif                        
                         <div class="button primary">
                             Далее
@@ -42,6 +48,11 @@
             </div>
         </div>
 
-        <div id="footer" class="footer"></div>
+        <div id="footer" class="footer">@include('footer')</div>
     </body>
 </html>
+@if(session('error'))
+    <script>
+        openAddReview();
+    </script>
+@endif

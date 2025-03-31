@@ -6,6 +6,7 @@
 
 .profile .my-profile {
     display: flex;
+    flex-direction: column;
     gap: 24px;
 }
 .profile .my-profile .photo {
@@ -28,11 +29,100 @@
     margin-top: auto;
     color: var(--blue-blue, #1540A0);
 }
-.profile .update-data {
+.profile .my-profile .update-data form{
     margin: 24px 0;
     display: flex;
+    flex-direction: column;
     gap: 60px;
 }
+
 .profile .update-data .fields {
     width: 400px;
 }
+.profile .my-profile .my-profile-info {
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+}
+
+.profile .my-profile .my-profile-change-avatar-form {
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+}
+
+.custom-file-upload {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .custom-file-upload-button {
+    background-color: #3498db;
+    border: none;
+    color: white;
+    padding: 8px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .custom-file-upload-button:hover {
+    background-color: #2980b9;
+  }
+  
+  .custom-file-upload-filename {
+    padding-left: 10px;
+    font-size: 14px;
+    color: #555;
+  }
+  
+  .custom-file-upload-input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  .change-pass-btn{
+    padding: 5px 16px;
+    line-height: 20px;
+    font-weight: 700;
+    font-size: 14px;
+    border-radius: 2px;
+    text-align: center;
+    cursor: pointer;
+    border: 1px solid #1540A0;
+    color: #1540A0;
+    width: fit-content;
+    height: 30px;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  .review-content{
+    margin-left: 6%;
+  }
+
+  .change-button{
+    padding: 5px 16px;
+    line-height: 20px;
+    font-weight: 700;
+    font-size: 14px;
+    border-radius: 2px;
+    text-align: center;
+    cursor: pointer;
+    border: 1px solid #1540A0;
+    color: #1540A0;
+    width: fit-content;
+    height: 30px;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 10px;
+  }
