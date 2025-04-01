@@ -16,5 +16,8 @@ DB_USERNAME=laravel
 DB_PASSWORD=password
 8. После этого сгенирируйте ключ для шифрования (docker-compose run artisan key:generate)
 9. запустите миграцию (docker-compose run artisan migrate)
-10. перейти по адресу http://localhost:8000
+10. зайдите в контейнер php (docker-compose exec -it php sh)
+11. создайте символическую ссылку (ln -s /var/www/laravel/storage/app/public/avatars avatars)
+12. выполните команду php artisan storage:link
+13. перейти по адресу http://localhost:8000
 После этого уже можно работать с приложением
