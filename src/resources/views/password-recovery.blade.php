@@ -28,31 +28,36 @@
                     <div>Введите свою почту и мы отправим Вам ссылку на восстановление пароля</div>
                 </div>
                 <div id="auth-data" class="popup--fields">
-                    <div class="field">
-                        <label class="field--label">E-mail</label>
-                        <div class="field--data">
-                            <input type="text" value="">
+                    <form action="{{ route('password.recovery') }}" method="POST">
+                        @csrf
+                        <div class="field">
+                            <label class="field--label">E-mail</label>
+                            <div class="field--data">
+                                <input type="text" name="email" value="{{ old('email') }}">
+                                @error('email')
+                                    <div class="error">{{ $message }}</div>
+                                @enderror
+                            </div>
                         </div>
-                    </div>
-                    <div class="field buttons">
-                        @if(Auth::id())
-                            <a href="./profile"><div class="button">Назад</div></a>
-                        @else
-                            <a href="./authentication" class="no-decoration"><div class="button">Назад</div></a>
-                        @endif                        
-                        <div class="button primary">
-                            Далее
+                        <div class="field buttons">
+                            @if(Auth::id())
+                                <a href="./profile"><div class="button">Назад</div></a>
+                            @else
+                                <a href="./authentication" class="no-decoration"><div class="button">Назад</div></a>
+                            @endif                        
+                            <button type="submit" class="button primary">Далее</button>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
 
         <div id="footer" class="footer">@include('footer')</div>
+
+        @if(session('status'))
+            <script>
+                alert("{{ session('status') }}");
+            </script>
+        @endif
     </body>
 </html>
-@if(session('error'))
-    <script>
-        openAddReview();
-    </script>
-@endif
