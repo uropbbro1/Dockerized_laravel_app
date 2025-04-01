@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AddReviewController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\PasswordRecoveryController;
 use App\Http\Controllers\ChangeAvatarController;
 use App\Http\Controllers\ChangePasswordController;
 use App\Http\Controllers\CheckPasswordController;
@@ -33,6 +34,9 @@ Route::post('/auth', [LoginController::class, 'store'])->middleware('guest')->na
 Route::get('/password-recovery', function () {
     return view('password-recovery');
 })->middleware('guest')->name('password-recovery');
+Route::post('/password-recovery', [PasswordRecoveryController::class, 'sendPasswordRecoveryEmail'])->name('password.recovery');
+Route::get('/password-reset/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
+Route::post('password/reset', [ResetPasswordController::class, 'reset']);
 
 Route::get('/privacy-policy', function () {
     return view('privacy-policy');
