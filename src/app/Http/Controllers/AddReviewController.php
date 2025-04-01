@@ -12,16 +12,15 @@ class AddReviewController extends Controller
     public function add(Request $request){
 
         $rules = [
-            'title' => 'required|max:255',
-            'text' => 'required|max:5000',
+            'title' => 'required|max:200',
+            'text' => 'required',
             'is_recommended' => 'required'
         ];
 
         $messages = [
             'title.required' => 'Заголовок должен быть заполненным',
-            'title.max'   => 'Заголовок не может быть длинее 255 символов',
+            'title.max'   => 'Заголовок не может быть длинее 200 символов',
             'text.required' => 'Текст отзыва должен быть заполненным',
-            'text.max' => 'Текст отзыва не может быть длинее 5000 символов',
             'is_recommended.required' => 'Выберите рекомендуете вы товар или нет.'
         ];
 
